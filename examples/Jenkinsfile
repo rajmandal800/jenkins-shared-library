@@ -1,0 +1,30 @@
+#!/usr/bin/env groovy
+
+// The @Library annotation is Jenkins-specific and will work in Jenkins environment
+// The underscore (_) is intentional and required to load the library implicitly
+@SuppressWarnings(['UnusedVariable', 'VariableNameSameAsClass'])
+@Library('jenkins-shared-library') _
+
+pipeline {
+    agent any
+    
+    stages {
+        stage('Build Docker Image') {
+            steps {
+                script {
+                    // Using the shared library function
+                    buildImage('my-application:latest')
+                }
+            }
+        }
+        
+        stage('Build Maven Jar') {
+            steps {
+                script {
+                    // Using another shared library function
+                    buildMavenJar()
+                }
+            }
+        }
+    }
+}
