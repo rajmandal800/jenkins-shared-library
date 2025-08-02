@@ -1,0 +1,44 @@
+please generate a .gitignore for a groovy project that includes the following files and directories:
+# Groovy project specific ignores
+*.class
+*.jar
+*.war
+*.groovy
+*.gradle
+*.log
+*.iml
+.gradle/
+build/
+out/
+.idea/
+.DS_Store
+*.swp
+*.tmp
+*.bak
+# Jenkins specific ignores
+jenkins/
+# Docker specific ignores
+Dockerfile
+docker-compose.yml
+# Environment specific ignores
+.env
+# IDE specific ignores
+*.idea/
+*.vscode/
+*.project
+*.classpath
+# Miscellaneous ignores
+*.log
+*.tmp
+*.bak
+*.swp
+# Ignore specific files
+# Note: The following files are recently edited and should not be ignored
+# vars/buildImage.groovy
+# Do not ignore this file as it has been recently edited
+# vars/anotherFile.groovy
+# Do not ignore this file as it has been recently edited
+# vars/someOtherFile.groovy
+# Do not ignore this file as it has been recently edited
+# Add any other files or directories that should not be ignored
+# but are not listed here.
