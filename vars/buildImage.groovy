@@ -1,5 +1,4 @@
 #!/usr/bin/env groovy
-import com.example.Docker
 
 /**
  * Jenkins Pipeline step to build and push Docker images
@@ -11,5 +10,5 @@ import com.example.Docker
  * buildImage('my-app:latest')
  */
 def call(String imageName) {
-    return new Docker(this).buildImage(imageName)
-} 
+    return new com.example.Docker(this).buildImage(imageName)
+}
