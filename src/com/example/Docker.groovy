@@ -14,12 +14,14 @@ class Docker implements Serializable {
         this.script = script
     }
     
-   
-    def dockerLogin() {
-        script.withCredentials([script.usernamePassword(credentialsId: 'nexus-docker-repo', passwordVariable: 'PASS', usernameVariable: 'USER')]) {
-            script.sh "echo $script.PASS | docker login -u $script.USER --password-stdin 192.168.64.8:8083"
-        }
+
+
+    def dockerLogin(String registry = '', String credentialsId) {
+    script.withCredentials([script.usernamePassword(credentialsId: credentialsId, passwordVariable: 'PASS', usernameVariable: 'USER')]) {
+        def loginTarget = registry?.trim() ? registry : ''
+        script.sh "echo \$PASS | docker login -u \$USER --password-stdin ${loginTarget}"
     }
+}
 
     def dockerBuild(String imageName) {
         script.sh "docker build -t ${imageName} ."
