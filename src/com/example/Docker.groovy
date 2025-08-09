@@ -23,10 +23,10 @@ class Docker implements Serializable {
     }
 }
 
-    // Single arch build (no push)
-     def dockerBuildSingleArch(String imageName) {
-         script.sh "docker build -t ${imageName} ."
+    def dockerBuild(String imageName) {
+    script.sh "docker build -t ${imageName} ."
     }
+
 
     def dockerPush(String imageName) {
         script.sh "docker push ${imageName}"
