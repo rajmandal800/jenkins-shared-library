@@ -23,10 +23,23 @@ class Docker implements Serializable {
     }
 }
 
-  def dockerBuild(String imageName) {
-    script.sh "docker buildx build --platform linux/amd64,linux/arm64 -t ${imageName} ."
-}
+    // Single arch build (no push)
+     def dockerBuildSingleArch(String imageName) {
+         script.sh "docker build -t ${imageName} ."
+    }
+
     def dockerPush(String imageName) {
         script.sh "docker push ${imageName}"
+    }
+
+     // Multi-arch build and push in one command (best practice)
+      def dockerBuildMultiArchAndPush(String imageName, String platforms = 'linux/amd64,linux/arm64') {
+        script.sh """
+            docker buildx build \\
+                --platform ${platforms} \\
+                -t ${imageName} \\
+                --push \\
+                .
+        """
     }
 }
