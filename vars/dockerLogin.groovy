@@ -1,5 +1,5 @@
 import com.example.Docker
 
-def call() {
-    return new Docker(this).dockerLogin()
+def call(String registry = '', String credentialsId) {
+    return new Docker(this).dockerLogin(registry, credentialsId)
 }
