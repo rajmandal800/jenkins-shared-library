@@ -1,6 +1,6 @@
 #!/usr/bin/env groovy
 import com.example.Docker
 
-def call(String imageName,  String platform = 'linux/amd64') {
-    return new Docker(this).dockerBuild(imageName,platform)
+def call(String imageName) {
+    return new Docker(this).dockerBuild(imageName)
 }
